@@ -1,0 +1,168 @@
+pipeline{
+    agent any
+    stages{
+        stage ("Hello"){
+            steps{
+                echo "Hello World!"
+            }
+        }
+    }
+    post{
+        always{
+            echo "Always run"
+        }
+        success{
+            echo "The run is successful"
+        }
+        failure{
+            echo "The run is failure"
+        }
+    }
+}
+
+pipeline{
+    agent any
+    stages{
+        stage ("Stage 1"){
+            steps{
+                echo "Step 1"
+            }
+        }
+        stage ("Stage 2"){
+            steps{
+                echo "Step 2"
+            }
+        }
+        stage ("Stage 3"){
+            steps{
+                echo "Step 3"
+            }
+        }
+    }
+    post{
+        always{
+            echo "Always run"
+        }
+        success{
+            echo "The run is successful"
+        }
+        failure{
+            echo "The run is failure"
+        }
+    }
+}
+
+pipeline{
+    agent any
+    stages{
+        stage ("Stage 1"){
+            steps{
+                echo "Step 1"
+            }
+        }
+        stage ("Stage 2"){
+            steps{
+                sh "dat"
+            }
+        }
+        stage ("Stage 3"){
+            steps{
+                echo "Step 3"
+            }
+        }
+    }
+    post{
+        always{
+            echo "Always run"
+        }
+        success{
+            echo "The run is successful"
+        }
+        failure{
+            echo "The run is failure"
+        }
+    }
+}
+
+pipeline{
+    agent any
+    stages{
+        stage ("Stage 1"){
+            steps{
+                echo "Step 1"
+            }
+        }
+        stage ("Stage 2"){
+            steps{
+                sh "dat"
+            }
+            post{
+                success{
+                    echo "Step 2 is successful"
+                }
+                failure{
+                    echo "Step 2 is failure"
+                }
+            }
+        }
+        stage ("Stage 3"){
+            steps{
+                echo "Step 3"
+            }
+        }
+    }
+    post{
+        always{
+            echo "Always run"
+        }
+        success{
+            echo "The run is successful"
+        }
+        failure{
+            echo "The run is failure"
+        }
+    }
+}
+
+pipeline{
+    agent any
+    stages{
+        stage ("Stage 1"){
+            steps{
+                echo "Step 1"
+            }
+        }
+        stage ("Stage 2"){
+            steps{
+                catchError (buildResult:'FAILURE', stageResult: 'failure'){
+                    sh "dat"
+                }
+                
+            }
+            post{
+                success{
+                    echo "Step 2 is successful"
+                }
+                failure{
+                    echo "Step 2 is failure"
+                }
+            }
+        }
+        stage ("Stage 3"){
+            steps{
+                echo "Step 3"
+            }
+        }
+    }
+    post{
+        always{
+            echo "Always run"
+        }
+        success{
+            echo "The run is successful"
+        }
+        failure{
+            echo "The run is failure"
+        }
+    }
+}

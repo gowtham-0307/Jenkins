@@ -1,0 +1,11 @@
+node{
+    stage ("Dev Stage){
+        sh "date"
+    }
+    stage ("Test Stage){
+        sh "uptime"
+    }
+    stage ("Prod Stage){
+        sh "pwd"
+    }
+}

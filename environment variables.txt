@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+
+    environment{
+        name = "Gowtham"
+        age = 30
+        city = "Coimbatore"
+    }
+
+    stages {
+        stage ("stage 1"){
+            steps {
+                echo "I am ${env.name} of age ${env.age} living in ${env.city}"
+            }
+        }
+    }
+}

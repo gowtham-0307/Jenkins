@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage ("Dev"){
+            step{
+                sh "date"
+            }
+        }
+        stage ("Test"){
+            step{
+                sh "uptime"
+            }
+        }
+        stage ("Prod"){
+            step{
+                sh "pwd"
+            }
+        }
+    }
+}
