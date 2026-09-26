@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+
+    stages {
+        stage('Parallel Stages'){
+            parallel{
+                stage ('stage 1'){
+                    steps{
+                        script{
+                            for(int i=1; i<=10; i++){
+                                echo "Hello $i"
+                            }
+                        }
+                    }
+                }
+                stage ('stage 2'){
+                    steps{
+                        script{
+                            for(int i=1; i<=10; i++){
+                                echo "World $i"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    
+}
